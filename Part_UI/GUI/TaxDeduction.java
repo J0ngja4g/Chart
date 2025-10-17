@@ -11,8 +11,13 @@ public class TaxDeduction extends JFrame {
     private JComboBox<String> maritalBox;
     private JCheckBox fatherBox, motherBox, disParentBox, disRelBox;
     private JTextField childField, providentField, socialField, homeLoanField, lifeIns, healthIns, otherFund;
+    private String userId;
+    private String year;
 
     public TaxDeduction(String userId, String year) {
+        this.userId = userId;
+        this.year = year;
+
         setTitle("กรอกข้อมูลเพื่อลดหย่อนภาษี");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1100, 650);
@@ -214,7 +219,7 @@ public class TaxDeduction extends JFrame {
                         fw.write(sb.toString());
                     }
                     dispose();
-                    new Result(null);
+                    new Result(userId).setVisible(true);;
                     System.out.println("บันทึกข้อมูลใหม่เรียบร้อย: " + file.getAbsolutePath());
         
                     // เรียกคำนวณภาษี 

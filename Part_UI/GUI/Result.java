@@ -219,7 +219,7 @@ public class Result extends JFrame {
         setVisible(true);
     }
 
-    private DefaultCategoryDataset readCSV(String filePath,String targetID,JLabel outputyear,JLabel outputincome,JLabel outputlodyon,JLabel outputpay) {
+    private DefaultCategoryDataset readCSV(String filePath,String currentUserID,JLabel outputyear,JLabel outputincome,JLabel outputlodyon,JLabel outputpay) {
     DefaultCategoryDataset dataset = new DefaultCategoryDataset();
     String line;
     String lastYear = null;
@@ -229,7 +229,7 @@ public class Result extends JFrame {
         br.readLine();
         while ((line = br.readLine()) != null) {
             String[] values = line.split(",");
-            if (values.length >= 6 && values[0].trim().equals(targetID)) {
+            if (values.length >= 6 && values[0].trim().equals(currentUserID)) {
                 String category = values[1].trim();
 
                 if(lastYear == null || Integer.parseInt(category) > Integer.parseInt(lastYear)){
